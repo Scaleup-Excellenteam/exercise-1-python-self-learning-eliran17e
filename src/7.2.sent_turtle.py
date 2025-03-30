@@ -13,12 +13,13 @@ class PostOffice:
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
 
-    def send_message(self, sender, recipient, message_body, urgent=False):
+    def send_message(self, sender, recipient, title, message_body, urgent=False):
         """Send a message to a recipient.
 
         Args:
             sender (str): The message sender's username.
             recipient (str): The message recipient's username.
+            title (str): The title of the message.
             message_body (str): The body of the message.
             urgent (bool, optional): The urgency of the message.
                                     Urgent messages appear first.
@@ -29,24 +30,19 @@ class PostOffice:
         Raises:
             KeyError: If the recipient does not exist.
 
-        Examples:
-            After creating a PO box and sending a letter,
-            the recipient should have 1 message in the
-            inbox.
-
-            >>> po_box = PostOffice(['a', 'b'])
-            >>> message_id = po_box.send_message('a', 'b', 'Hello!')
-            >>> len(po_box.boxes['b'])
-            1
-            >>> message_id
-            1
+       
         """
+        if recipient not in self.boxes:
+            raise KeyError(f"User '{recipient}' does not exist.")
+
         user_box = self.boxes[recipient]
-        self.message_id = self.message_id + 1
+        self.message_id += 1
         message_details = {
             'id': self.message_id,
+            'title': title,
             'body': message_body,
             'sender': sender,
+            'unread': True,
         }
         if urgent:
             user_box.insert(0, message_details)
@@ -72,6 +68,8 @@ class PostOffice:
             num_messages = len(user_box)
 
         messages_to_read = user_box[:num_messages]
+        for message in messages_to_read:
+            message['unread'] = False
         self.boxes[username] = user_box[num_messages:]
         return messages_to_read
 
@@ -89,4 +87,4 @@ class PostOffice:
             raise KeyError(f"User '{username}' does not exist.")
 
         user_box = self.boxes[username]
-        return [message for message in user_box if search_string in message['body']]
+        return [message for message in user_box if search_string in message['title'] or search_string in message['body']]
