@@ -25,9 +25,7 @@ def no_vinnigrete(date1,date2):
     random_days = random.randint(0, delta)
     date_result = start_date + datetime.timedelta(days=random_days)
     if (date_result.weekday() == 0):
-        return True
-    else:
-        return False
+        print("Ain't gettin' no vinaigrette today :(")
 
 
 def main():
@@ -40,9 +38,6 @@ def main():
             print("Invalid date format. Please try again.")
         if len(dates) == 2:
             break
-    if(no_vinnigrete(dates[0], dates[1])):
-        print("No vinngrete for you")
-    else:
-        print("we have vinnigrete for you")
+    no_vinnigrete(dates[0], dates[1])
 if __name__ == "__main__":
     main()
