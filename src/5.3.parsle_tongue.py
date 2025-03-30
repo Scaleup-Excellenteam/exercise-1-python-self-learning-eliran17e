@@ -31,7 +31,7 @@ def parsle_tongue():
             for chunk in read_in_chunks(f):
                 for byte in chunk:
                     char = chr(byte)
-                    if char.islower() or char == '!':
+                    if char.islower():
                         current_message += char
                         if char == '!' and len(current_message) >= 5:
                             secret_messages.append(current_message)
