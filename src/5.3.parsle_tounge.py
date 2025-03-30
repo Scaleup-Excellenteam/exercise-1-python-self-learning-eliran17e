@@ -13,7 +13,7 @@ def read_in_chunks(file_object, chunk_size=1024):
             break
         yield data
 
-def extract_secret_messages(file_path):
+def parsle_tongue(file_path):
     """
     Extracts secret messages from a binary file.
     param file_path: the path to the binary file
@@ -39,7 +39,7 @@ def extract_secret_messages(file_path):
 def main():
     relative_path = "./logo.jpg"
     full_path = os.path.abspath(relative_path)
-    messages = extract_secret_messages(full_path)
+    messages = parsle_tongue(full_path)
     for message in messages:
         print(message)
 
