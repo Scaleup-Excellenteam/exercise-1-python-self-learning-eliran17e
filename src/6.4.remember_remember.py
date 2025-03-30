@@ -1,19 +1,32 @@
-from PIL import Image
+"""
+This module provides a function to decode a message from an image using PIL.
+"""
+
 import os
+from PIL import Image
 
 def is_black(pixel, tolerance=10):
     """
-    Param pixel:
-    Param tolerance:
-    Return a boolean indicating if the pixel is black
+    Check if a pixel is black within a given tolerance.
+
+    Parameters:
+    pixel (tuple): The RGB values of the pixel.
+    tolerance (int): The tolerance level for considering a pixel as black.
+
+    Returns:
+    bool: True if the pixel is black, False otherwise.
     """
     return all(channel <= tolerance for channel in pixel)
 
 def remember_remember(image_path):
     """
-    Decode a message from an image using PIL only.
-    Param image_path:
-    Return the decoded message as a string
+    Decode a message from an image using PIL.
+
+    Parameters:
+    image_path (str): The path to the image file.
+
+    Returns:
+    str: The decoded message.
     """
     img = Image.open(image_path).convert('RGB')
     width, height = img.size
@@ -29,6 +42,9 @@ def remember_remember(image_path):
     return message
 
 def main():
+    """
+    Main function to demonstrate the usage of the remember_remember function.
+    """
     relative_path = "./code.png"
     full_path = os.path.abspath(relative_path)
     if not os.path.exists(full_path):
