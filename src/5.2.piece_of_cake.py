@@ -1,15 +1,20 @@
+"""
+This module provides a function to calculate the total price of a recipe
+based on the prices of the ingredients and their quantities.
+"""
+
 def piece_of_cake(prices, optionals=None, **quantities):
     """
     The function calculates the total price of a recipe based
-     on the prices of the ingredients and their quantities.
-
+    on the prices of the ingredients and their quantities.
+    
     Parameters:
     prices (dict): A dictionary with the prices of the ingredients
     optionals (list): A list of optional ingredients
     quantities (dict): A dictionary with the quantities of the ingredients
-
-    Returns the total price of the recipe
     
+    Returns:
+    float: The total price of the recipe
     """
     if optionals is None:
         optionals = []
@@ -22,10 +27,13 @@ def piece_of_cake(prices, optionals=None, **quantities):
 
     return total_price
 
-
 def main():
+    """
+    Main function to demonstrate the usage of the piece_of_cake function.
+    """
     print(piece_of_cake({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100))  # Output: 44
     print(piece_of_cake({'chocolate': 18, 'milk': 8}, optionals=['milk'], chocolate=300))  # Output: 54
     print(piece_of_cake({}))  # Output: 0
+
 if __name__ == '__main__':
     main()
