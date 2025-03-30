@@ -1,6 +1,6 @@
 import os
 
-def that_the_way(dict, file_name):
+def thats_the_way(dict, file_name):
     """
 
       Parameters:
