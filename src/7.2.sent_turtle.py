@@ -11,13 +11,12 @@ class PostOffice:
         self.message_id = 0
         self.boxes = {user: [] for user in usernames}
 
-    def send_message(self, sender, recipient, title, message_body, urgent=False):
+    def send_message(self, sender, recipient, message, urgent=False):
         """Send a message to a recipient.
         Args:
             sender (str): The message sender's username.
             recipient (str): The message recipient's username.
-            title (str): The title of the message.
-            message_body (str): The body of the message.
+            message (dict): The message details with 'title' and 'body'.
             urgent (bool, optional): The urgency of the message.
                                     Urgent messages appear first.
         Returns:
@@ -32,8 +31,8 @@ class PostOffice:
         self.message_id += 1
         message_details = {
             'id': self.message_id,
-            'title': title,
-            'body': message_body,
+            'title': message['title'],
+            'body': message['body'],
             'sender': sender,
             'unread': True,
         }
