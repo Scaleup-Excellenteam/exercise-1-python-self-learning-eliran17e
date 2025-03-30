@@ -1,41 +1,51 @@
+"""
+This module provides a function to measure the execution time of another function.
+"""
+
 import time
 
-def running_2000(f, *parameters,**dict):
+def running_2000(f, *parameters, **kwargs):
     """
     Measures how long a function takes to execute.
 
     Parameters:
     f (function): The function to execute
     *parameters: Arguments to pass to the function
+    **kwargs: Keyword arguments to pass to the function
 
     Returns:
     float: Time taken in seconds
 
-    This function uses a try-except block to safely attempt to call the 
-    provided function. If an error occurs during execution, it prints 
+    This function uses a try-except block to safely attempt to call the
+    provided function. If an error occurs during execution, it prints
     an error message and returns None instead of crashing.
     """
     try:
         start = time.time()
-        f(*parameters,**dict)
+        f(*parameters, **kwargs)
         end = time.time()
         result = end - start
         return result
-    except Exception as e:
+    except (TypeError, ValueError, RuntimeError) as e:
         print(f"An error occurred while running the function: {e}")
         return None
 
-def long_function(list=[1, 2, 3, 4, 5]):
+def long_function(lst=None):
     """
     Simulates a long-running process by sleeping for each value in the list.
-    
+
     Parameters:
-    list (list of int): Each value represents a delay (in seconds)
+    lst (list of int): Each value represents a delay (in seconds)
     """
-    for i in list:
+    if lst is None:
+        lst = [1, 2, 3, 4, 5]
+    for i in lst:
         time.sleep(i)
 
 def main():
+    """
+    Main function to demonstrate the usage of the running_2000 function.
+    """
     result = running_2000(long_function, [1, 2])
     if result is not None:
         print(f"Time taken: {result:.2f} seconds")
