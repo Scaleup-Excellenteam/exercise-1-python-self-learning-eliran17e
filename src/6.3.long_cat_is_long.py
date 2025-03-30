@@ -1,15 +1,26 @@
+"""
+This module provides a function to count the number of letters in each word in a given text.
+"""
+
 import string
 
 def long_cat_is_long(text):
     """
     Count the number of letters in each word in the given text.
-    :param text:
-    :return: dictionary with words as keys and their lengths as values
+
+    Parameters:
+    text (str): The text to analyze
+
+    Returns:
+    dict: A dictionary with words as keys and their lengths as values
     """
     words = (word.strip(string.punctuation) for word in text.split())
     return {word: len(word) for word in words if word.isalpha()}
 
 def main():
+    """
+    Main function to demonstrate the usage of the long_cat_is_long function.
+    """
     text = """
     You see, wire telegraph is a kind of a very, very long cat.
     You pull his tail in New York and his head is meowing in Los Angeles.
