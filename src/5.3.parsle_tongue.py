@@ -21,19 +21,29 @@ def parsle_tongue():
     """
     secret_messages = []
     current_message = ""
-    relative_path = "./logo.jpg"
-    file_path = os.path.abspath(relative_path)
-    with open(file_path, 'rb') as f:
-        for chunk in read_in_chunks(f):
-            for byte in chunk:
-                char = chr(byte)
-                if char.islower() or char == '!':
-                    current_message += char
-                    if char == '!' and len(current_message) >= 5:
-                        secret_messages.append(current_message)
+
+    # Path to this script's directory
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, "logo.jpg")
+
+    try:
+        with open(file_path, 'rb') as f:
+            for chunk in read_in_chunks(f):
+                for byte in chunk:
+                    char = chr(byte)
+                    if char.islower() or char == '!':
+                        current_message += char
+                        if char == '!' and len(current_message) >= 5:
+                            secret_messages.append(current_message)
+                            current_message = ""
+                    else:
                         current_message = ""
-                else:
-                    current_message = ""
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+    except PermissionError:
+        print(f"Permission denied: {file_path}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
     return secret_messages
 
