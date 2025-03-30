@@ -33,9 +33,9 @@ def parsle_tongue():
                     char = chr(byte)
                     if char.islower():
                         current_message += char
-                        if char == '!' and len(current_message) >= 5:
-                            secret_messages.append(current_message)
-                            current_message = ""
+                    elif char == '!' and len(current_message) >= 5:
+                        secret_messages.append(current_message)
+                        current_message = ""
                     else:
                         current_message = ""
     except FileNotFoundError:
