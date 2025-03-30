@@ -1,4 +1,4 @@
-def get_recipe_price(prices, optionals=None, **quantities):
+def piece_of_cake(prices, optionals=None, **quantities):
     """
     The function calculates the total price of a recipe based
      on the prices of the ingredients and their quantities.
@@ -24,8 +24,8 @@ def get_recipe_price(prices, optionals=None, **quantities):
 
 
 def main():
-    print(get_recipe_price({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100))  # Output: 44
-    print(get_recipe_price({'chocolate': 18, 'milk': 8}, optionals=['milk'], chocolate=300))  # Output: 54
-    print(get_recipe_price({}))  # Output: 0
+    print(piece_of_cake({'chocolate': 18, 'milk': 8}, chocolate=200, milk=100))  # Output: 44
+    print(piece_of_cake({'chocolate': 18, 'milk': 8}, optionals=['milk'], chocolate=300))  # Output: 54
+    print(piece_of_cake({}))  # Output: 0
 if __name__ == '__main__':
     main()
