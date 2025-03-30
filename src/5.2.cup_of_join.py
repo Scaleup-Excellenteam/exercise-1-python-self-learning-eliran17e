@@ -15,8 +15,8 @@ def cup_of_join(*lists, sep=None):
             combined_list.extend(item)
         if index != len(lists) - 1 and sep is not None:
             combined_list.append(sep)
-
-    combined_list.append(sep)
+    if sep is not None:
+        combined_list.append(sep)
     return combined_list
 
 
