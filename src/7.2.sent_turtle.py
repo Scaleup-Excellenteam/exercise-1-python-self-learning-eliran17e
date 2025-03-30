@@ -78,4 +78,8 @@ class PostOffice:
             raise KeyError(f"User '{username}' does not exist.")
         search_string = search_string.lower()
         user_box = self.boxes[username]
-        return [message for message in user_box if search_string in message['title'].lower() or search_string in message['body'].lower()]
+        result = []
+        for message in user_box:
+            if search_string in message['title'].lower() or search_string in message['body'].lower():
+                result.append(message)
+        return result
