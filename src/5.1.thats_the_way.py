@@ -1,6 +1,6 @@
 import os
 
-def that_the_way( file_name):
+def thats_the_way( file_name):
     """
 
       Parameters:
@@ -24,7 +24,7 @@ def that_the_way( file_name):
 
 def main():
 
-    print(that_the_way( "deep"))
+    print(thats_the_way( "deep"))
 
 if __name__ == '__main__':
     main()
