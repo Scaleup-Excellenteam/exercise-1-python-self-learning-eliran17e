@@ -14,7 +14,10 @@ def no_vinnigrete(date1,date2):
     """
 
 
-
+    if isinstance(date1, str):
+        date1 = datetime.datetime.strptime(date1, "%Y-%m-%d")
+    if isinstance(date2, str):
+        date2 = datetime.datetime.strptime(date2, "%Y-%m-%d")
     start_date = min(date1, date2)
     end_date = max(date1, date2)
     # Calculate the difference between dates in days
