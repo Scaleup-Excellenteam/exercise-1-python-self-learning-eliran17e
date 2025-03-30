@@ -1,6 +1,6 @@
 import string
 
-def count_words(text):
+def long_cat_is_long(text):
     """
     Count the number of letters in each word in the given text.
     :param text:
@@ -17,7 +17,7 @@ def main():
     And radio operates exactly the same way: you send signals here, they receive them there.
     The only difference is that there is no cat.
     """
-    word_count = count_words(text)
+    word_count = long_cat_is_long(text)
     print(word_count)
 
 if __name__ == '__main__':
