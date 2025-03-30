@@ -1,3 +1,6 @@
+"""
+This module provides a Post Office class that allows users to message each other.
+"""
 class PostOffice:
     """A Post Office class. Allows users to message each other.
     Args:
