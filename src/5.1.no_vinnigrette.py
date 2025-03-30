@@ -1,4 +1,8 @@
 import datetime
+"""
+This module provides a function to generate a random date between two dates
+and check if it is a Monday.
+"""
 import random
 
 """
