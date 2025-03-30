@@ -29,8 +29,6 @@ class PostOffice:
 
         Raises:
             KeyError: If the recipient does not exist.
-
-
         """
         if recipient not in self.boxes:
             raise KeyError(f"User '{recipient}' does not exist.")
@@ -70,7 +68,6 @@ class PostOffice:
         messages_to_read = user_box[:num_messages]
         for message in messages_to_read:
             message['unread'] = False
-        self.boxes[username] = user_box[num_messages:]
         return messages_to_read
 
     def search_inbox(self, username, search_string):
@@ -87,4 +84,4 @@ class PostOffice:
             raise KeyError(f"User '{username}' does not exist.")
         search_string = search_string.lower()
         user_box = self.boxes[username]
-        return [message for message in user_box if search_string in message['title'].lower or search_string in message['body'].lower]
+        return [message for message in user_box if search_string in message['title'].lower() or search_string in message['body'].lower()]
