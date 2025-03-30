@@ -8,7 +8,10 @@ def interleave(*list):
     Returns the interleaved list
     """
     result = []
-    max_length = max(len(lst) for lst in list)
+    if len(list)>1:
+        max_length = max(len(lst) for lst in list)
+    else:
+        max_length=1
     for i in range(max_length):
         for iter in list:
             if i < len(iter):
@@ -23,7 +26,10 @@ def generator_interleave(*list):
 
     Returns the interleaved list
     """
-    max_length = max(len(lst) for lst in list)
+    if len(list)>1:
+        max_length = max(len(lst) for lst in list)
+    else:
+        max_length=1
     for i in range(max_length):
         for iter in list:
             if i < len(iter):
