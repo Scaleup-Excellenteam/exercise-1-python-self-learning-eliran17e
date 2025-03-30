@@ -1,9 +1,11 @@
+"""
+This module provides a Post Office class that allows users to message each other.
+"""
+
 class PostOffice:
     """A Post Office class. Allows users to message each other.
-
     Args:
         usernames (list): Users for which we should create PO Boxes.
-
     Attributes:
         message_id (int): Incremental id of the last message sent.
         boxes (dict): Users' inboxes.
@@ -15,7 +17,6 @@ class PostOffice:
 
     def send_message(self, sender, recipient, title, message_body, urgent=False):
         """Send a message to a recipient.
-
         Args:
             sender (str): The message sender's username.
             recipient (str): The message recipient's username.
@@ -23,10 +24,8 @@ class PostOffice:
             message_body (str): The body of the message.
             urgent (bool, optional): The urgency of the message.
                                     Urgent messages appear first.
-
         Returns:
             int: The message ID, auto incremented number.
-
         Raises:
             KeyError: If the recipient does not exist.
         """
@@ -50,11 +49,9 @@ class PostOffice:
 
     def read_inbox(self, username, num_messages=None):
         """Read messages from the user's inbox.
-
         Args:
             username (str): The username of the recipient.
             num_messages (int, optional): The number of messages to read. Defaults to None.
-
         Returns:
             list: The list of messages read.
         """
@@ -72,11 +69,9 @@ class PostOffice:
 
     def search_inbox(self, username, search_string):
         """Search for messages containing the search string in the user's inbox.
-
         Args:
             username (str): The username of the recipient.
             search_string (str): The string to search for in the messages.
-
         Returns:
             list: The list of messages containing the search string.
         """
