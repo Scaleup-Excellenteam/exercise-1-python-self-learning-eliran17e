@@ -1,6 +1,6 @@
 import time
 
-def running_2000(f, *parameters):
+def running_2000(f, *parameters,**dict):
     """
     Measures how long a function takes to execute.
 
@@ -17,7 +17,7 @@ def running_2000(f, *parameters):
     """
     try:
         start = time.time()
-        f(*parameters)
+        f(*parameters,**dict)
         end = time.time()
         result = end - start
         return result
