@@ -12,7 +12,7 @@ def is_black(pixel, tolerance=10):
     """
     return np.all(pixel <= tolerance)
 
-def decode_message_np(image_path):
+def remember_remember(image_path):
     """
     Decode a message from an image using numpy.
     Param image_path:
@@ -38,7 +38,7 @@ def main():
     if not os.path.exists(full_path):
         print(f"File '{full_path}' not found.")
         return
-    message = decode_message_np(full_path)
+    message = remember_remember(full_path)
     print("Decoded message:", message)
 
 if __name__ == '__main__':
