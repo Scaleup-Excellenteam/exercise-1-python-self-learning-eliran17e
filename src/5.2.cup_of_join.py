@@ -1,4 +1,4 @@
-def cup_of_join(*lists, sep='-'):
+def cup_of_join(*lists, sep=None):
 
     """
     Combine multiple lists into one list with a separator between them.
