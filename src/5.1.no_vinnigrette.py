@@ -21,7 +21,6 @@ def no_vinnigrete(date1, date2):
         date2 = datetime.datetime.strptime(date2, "%Y-%m-%d")
     start_date = min(date1, date2)
     end_date = max(date1, date2)
-    # Calculate the difference between dates in days
     delta = (end_date - start_date).days
     random_days = random.randint(0, delta)
     date_result = start_date + datetime.timedelta(days=random_days)
