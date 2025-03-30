@@ -30,7 +30,7 @@ class PostOffice:
         Raises:
             KeyError: If the recipient does not exist.
 
-       
+
         """
         if recipient not in self.boxes:
             raise KeyError(f"User '{recipient}' does not exist.")
@@ -85,6 +85,6 @@ class PostOffice:
         """
         if username not in self.boxes:
             raise KeyError(f"User '{username}' does not exist.")
-
+        search_string = search_string.lower()
         user_box = self.boxes[username]
-        return [message for message in user_box if search_string in message['title'] or search_string in message['body']]
+        return [message for message in user_box if search_string in message['title'].lower or search_string in message['body'].lower]
