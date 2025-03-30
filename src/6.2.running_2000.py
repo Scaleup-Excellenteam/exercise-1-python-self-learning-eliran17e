@@ -1,5 +1,5 @@
 import time
-def timer(f,*parameters):
+def running_2000(f,*parameters):
     """
     A decorator that prints the time a function takes to execute.
     """
@@ -16,7 +16,7 @@ def long_function(list=[1,2,3,4,5]):
        time.sleep(i)
 def main():
 
-    result = timer(long_function,[1,2])
+    result = running_2000(long_function,[1,2])
     print(f"Time taken: {result} seconds")
 if __name__ == '__main__':
     main()
