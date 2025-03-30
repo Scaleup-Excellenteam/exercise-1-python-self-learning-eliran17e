@@ -1,10 +1,12 @@
-import datetime
-import random
-
 """
+Module: no_vinnigrete
 This module provides a function to generate a random date between two dates
 and check if it is a Monday.
 """
+import datetime
+import random
+
+
 
 def no_vinnigrete(date1, date2):
     """
