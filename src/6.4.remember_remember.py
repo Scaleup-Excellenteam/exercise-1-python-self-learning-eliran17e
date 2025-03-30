@@ -1,3 +1,6 @@
+from PIL import Image
+import os
+
 def is_black(pixel, tolerance=10):
     """
     Param pixel:
