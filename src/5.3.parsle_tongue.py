@@ -1,11 +1,19 @@
+"""
+This module provides functions to read a file in chunks and extract secret messages from a binary file.
+"""
+
 import os
 
 def read_in_chunks(file_object, chunk_size=1024):
     """
     Reads a file in chunks of specified size.
-    Param 1 file_object: the file object to read from
-    Param 2 chunk_size: the size of each chunk to read
 
+    Parameters:
+    file_object (file object): The file object to read from.
+    chunk_size (int): The size of each chunk to read.
+
+    Yields:
+    bytes: The next chunk of the file.
     """
     while True:
         data = file_object.read(chunk_size)
@@ -16,8 +24,9 @@ def read_in_chunks(file_object, chunk_size=1024):
 def parsle_tongue():
     """
     Extracts secret messages from a binary file.
-    
-    Returns a list of secret messages
+
+    Returns:
+    list: A list of secret messages.
     """
     secret_messages = []
     current_message = ""
@@ -42,13 +51,15 @@ def parsle_tongue():
         print(f"File not found: {file_path}")
     except PermissionError:
         print(f"Permission denied: {file_path}")
-    except Exception as e:
+    except OSError as e:
         print(f"An error occurred: {e}")
 
     return secret_messages
 
 def main():
-    
+    """
+    Main function to demonstrate the usage of the parsle_tongue function.
+    """
     messages = parsle_tongue()
     for message in messages:
         print(message)
