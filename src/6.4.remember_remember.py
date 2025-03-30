@@ -1,34 +1,27 @@
-import numpy as np
-from PIL import Image
-import os
-
 def is_black(pixel, tolerance=10):
     """
-
     Param pixel:
     Param tolerance:
     Return a boolean indicating if the pixel is black
-
     """
-    return np.all(pixel <= tolerance)
+    return all(channel <= tolerance for channel in pixel)
 
 def remember_remember(image_path):
     """
-    Decode a message from an image using numpy.
+    Decode a message from an image using PIL only.
     Param image_path:
     Return the decoded message as a string
     """
     img = Image.open(image_path).convert('RGB')
-    data = np.array(img)
-    height, width, _ = data.shape
+    width, height = img.size
 
     message = ""
     for x in range(width):
-        column = data[:, x]
-        black_rows = np.where([is_black(pixel) for pixel in column])[0]
-        if black_rows.size > 0:
-            black_row = black_rows[0]
-            message += chr(black_row)
+        for y in range(height):
+            pixel = img.getpixel((x, y))
+            if is_black(pixel):
+                message += chr(y)
+                break  # Only use the first black pixel in the column
 
     return message
 
