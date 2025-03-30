@@ -1,22 +1,22 @@
 def cup_of_join(*lists, sep='-'):
 
     """
-    Combine couple lists into one list with a separator between them
+    Combine multiple lists into one list with a separator between them.
 
     Parameters:
     lists (list): The lists to be combined
     sep (str): The separator to be used
 
-    Returns the list with the separator between them
+    Returns a list with the separator between them
     """
     combined_list = []
-    for item in lists:
-        for i in item:
-            combined_list.append(i)
-            if i==item[-1] and item != lists[-1]:
-                combined_list.append(sep)
+    for index, item in enumerate(lists):
+        combined_list.extend(item)
+        if index != len(lists) - 1 and sep is not None:
+            combined_list.append(sep)
 
-    return sep.join(map(str, combined_list))
+    return combined_list
+
 
 
 def main():
