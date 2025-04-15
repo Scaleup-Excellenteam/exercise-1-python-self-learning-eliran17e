@@ -14,7 +14,7 @@ def interleave(*lists):
     Returns:
     list: The interleaved list
     """
-     return [item for group in zip_longest(*lists, fillvalue=None) for item in group if item is not None]
+    return [item for group in zip_longest(*lists, fillvalue=None) for item in group if item is not None]
 
 def generator_interleave(*lists):
     """
