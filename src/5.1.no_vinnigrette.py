@@ -6,7 +6,7 @@ and check if it is a Monday.
 import datetime
 import random
 
-
+MONDAY = 0
 
 def no_vinnigrete(date1, date2):
     """
@@ -26,7 +26,7 @@ def no_vinnigrete(date1, date2):
     delta = (end_date - start_date).days
     random_days = random.randint(0, delta)
     date_result = start_date + datetime.timedelta(days=random_days)
-    if date_result.weekday() == 0:
+    if date_result.weekday() == MONDAY:
         print("Ain't gettin' no vinaigrette today :(")
 
 def main():
@@ -34,16 +34,15 @@ def main():
     Main function to prompt user for two dates and check if a random date
     between them is a Monday.
     """
-    dates = []
-    while True:
-        user_input = input("Please enter a date (YYYY-MM-DD): ")
-        try:
-            dates.append(datetime.datetime.strptime(user_input, "%Y-%m-%d"))
-        except ValueError:
-            print("Invalid date format. Please try again.")
-        if len(dates) == 2:
-            break
-    no_vinnigrete(dates[0], dates[1])
+    date1_str = input("Please enter the first date (YYYY-MM-DD): ")
+    date2_str = input("Please enter the second date (YYYY-MM-DD): ")
+
+    try:
+        date1 = datetime.datetime.strptime(date1_str, "%Y-%m-%d")
+        date2 = datetime.datetime.strptime(date2_str, "%Y-%m-%d")
+        no_vinnigrete(date1, date2)
+    except ValueError:
+        print("One of the dates is in an invalid format. Please try again.")
 
 if __name__ == "__main__":
     main()
