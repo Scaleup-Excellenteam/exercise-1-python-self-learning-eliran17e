@@ -31,13 +31,10 @@ def remember_remember(image_path):
     img = Image.open(image_path).convert('RGB')
     width, height = img.size
 
-    message = ""
-    for x in range(width):
-        for y in range(height):
-            pixel = img.getpixel((x, y))
-            if is_black(pixel):
-                message += chr(y)
-                break  # Only use the first black pixel in the column
+    message = ''.join([
+        chr(next((y for y in range(height) if is_black(img.getpixel((x, y)))), 0))
+        for x in range(width)
+    ])
 
     return message
 
@@ -47,11 +44,14 @@ def main():
     """
     relative_path = "./code.png"
     full_path = os.path.abspath(relative_path)
-    if not os.path.exists(full_path):
-        print(f"File '{full_path}' not found.")
-        return
-    message = remember_remember(full_path)
-    print("Decoded message:", message)
+
+    try:
+        if not os.path.exists(full_path):
+            raise FileNotFoundError(f"File '{full_path}' not found.")
+        message = remember_remember(full_path)
+        print("Decoded message:", message)
+    except (FileNotFoundError, OSError) as e:
+        print(f"Error: {e}")
 
 if __name__ == '__main__':
     main()
