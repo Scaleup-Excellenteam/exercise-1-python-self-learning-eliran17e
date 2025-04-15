@@ -1,3 +1,5 @@
+from itertools import zip_longest
+
 """
 This module provides functions to interleave multiple lists into one list.
 """
@@ -12,13 +14,7 @@ def interleave(*lists):
     Returns:
     list: The interleaved list
     """
-    result = []
-    max_length = max((len(lst) for lst in lists), default=0)
-    for i in range(max_length):
-        for lst in lists:
-            if i < len(lst):
-                result.append(lst[i])
-    return result
+     return [item for group in zip_longest(*lists, fillvalue=None) for item in group if item is not None]
 
 def generator_interleave(*lists):
     """
